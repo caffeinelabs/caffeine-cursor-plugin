@@ -1,0 +1,16 @@
+---
+description: Working on a Caffeine project's Motoko and frontend source locally instead of through the Caffeine agent
+alwaysApply: false
+---
+
+local-development:
+
+This is the second of the two paths in the caffeine-workflow rule. Use it only when the user wants to edit a Caffeine project's source in this workspace rather than describing changes to the Caffeine agent.
+
+- `caffeine_local_setup` is the authority on the steps, not your memory of them. Call it with no arguments to get the current workflow: install the CLI, log in, download the project's source, edit, validate, upload.
+- The setup runs on the user's own machine and includes a device login. Ask before installing the CLI or starting a login. If your shell is a sandbox that cannot reach caffeine.ai or open the user's browser, say so and use the `caffeine_chat_*` tools instead.
+- During the login step, `caffeine auth device start` prints a short user code. Call `caffeine_local_setup` again with `{ userCode }` to approve that device login under the authenticated account, which completes sign-in without a browser round trip.
+- Follow the two upstream skills for the actual code. The Caffeine app skill covers project structure (`caffeine.toml`, `mops.toml`) and the build/check/preview loop: https://skills.internetcomputer.org/skills/caffeine-app/SKILL.md — the Motoko skill covers the backend language: https://skills.internetcomputer.org/skills/motoko/SKILL.md — fetch them rather than guessing at Motoko syntax or project layout.
+- Validate before uploading. Run the project's check and build steps locally and fix what they report; pushing source that fails to build wastes a deploy cycle.
+- The local and agent paths write to the same project. Do not run a chat session that edits code while you have uncommitted local changes to the same project, or one will overwrite the other.
+- `caffeine_build`, `caffeine_check`, `caffeine_preview`, `caffeine_clone_project`, and the `caffeine_config_*` tools exist only on a locally-run MCP server. Over the hosted connection this plugin uses, they are not available — run the equivalent CLI commands in the terminal instead, as `caffeine_local_setup` describes.

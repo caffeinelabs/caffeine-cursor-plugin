@@ -1,0 +1,23 @@
+{
+  "name": "caffeine",
+  "displayName": "Caffeine",
+  "version": "0.1.0",
+  "description": "Drive Caffeine from Cursor: create projects, send work to the Caffeine agent, follow builds and deployments, and drop into local Motoko development, all through the Caffeine MCP server.",
+  "author": {
+    "name": "Caffeine"
+  },
+  "publisher": "Caffeine",
+  "homepage": "https://caffeine.ai",
+  "repository": "https://github.com/caffeinelabs/caffeine-cli",
+  "license": "MIT",
+  "category": "integrations",
+  "keywords": [
+    "caffeine",
+    "mcp",
+    "app-builder",
+    "motoko",
+    "internet-computer",
+    "fullstack"
+  ],
+  "logo": "assets/logo.svg"
+}

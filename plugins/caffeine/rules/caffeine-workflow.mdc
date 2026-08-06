@@ -1,0 +1,24 @@
+---
+description: How to drive a Caffeine project from Cursor through the Caffeine MCP tools
+alwaysApply: false
+---
+
+caffeine-workflow:
+
+Caffeine builds and hosts full-stack apps on the Internet Computer — a Motoko backend with a web frontend. The Caffeine agent owns the code: you describe a change, it writes, builds, and deploys it, then the project's draft and live URLs update. You are not editing those files locally unless you deliberately switch to the local path.
+
+- A project starts empty. `caffeine_create_project` takes no arguments and derives the name itself; the brief goes in afterward as the first chat message. Creating a project without following it with a prompt leaves an empty shell.
+- Work happens in chat sessions. `caffeine_chat_start_session` sends a prompt and waits a bounded time for the session to settle; it returns a continuation hint when the agent is still working. Pass `detach: true` only when you intend to poll separately.
+- A session that is still running is not a finished change. Follow up with `caffeine_chat_watch_session`, `caffeine_chat_session_status`, or `caffeine_chat_tail` until it reaches a stable state before reporting anything as done.
+- The agent asks questions. When a session blocks on a clarification, answer it with `caffeine_chat_reply`; when it presents a structured form, answer it with `caffeine_chat_submit_form` using the `messageIndex` of the form message. Ignoring a clarification leaves the session parked indefinitely.
+- Read state before claiming an outcome. `caffeine_show_project` returns `draftState`, `draftUrl`, and `liveUrl`. `draftState` moves through `no_draft`, `deploying`, `deployed`, `expired` — a `deploying` draft is not yet something to share.
+- Share the right link. `draftUrl` is the work in progress, `liveUrl` is what the public sees, and `caffeine_chat_url` gives a browser URL for continuing the conversation on caffeine.ai.
+- `caffeine_delete_project` is permanent. Confirm the specific project with the user before calling it, and never infer it from an ambiguous reference.
+- Pick up where you left off instead of starting over. `caffeine_chat_active_sessions` finds sessions that are running or blocked, and `caffeine_chat_resume_session` reattaches to one.
+
+Two ways to change code, and they are not interchangeable:
+
+1. **Through the agent** (`caffeine_chat_*`) — the default. Describe the change in plain language; Caffeine modifies, builds, and deploys it.
+2. **Locally** — when the user wants to edit Motoko or frontend source directly in this workspace. Call `caffeine_local_setup` for the real workflow and follow the local-development rule. This requires installing the Caffeine CLI and a browser login on the user's own machine, so ask first.
+
+Do not install software, trigger a browser login, or write to the user's disk without explicit consent.

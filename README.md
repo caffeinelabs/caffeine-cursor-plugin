@@ -40,6 +40,24 @@ That walks the same discovery chain Cursor does — unauthenticated `initialize`
 
 To introduce a new plugin, establish `plugins/<name>/.cursor-plugin/plugin.json` and register it in `.cursor-plugin/marketplace.json`.
 
+## Testing the plugin end to end
+
+The supported ways to load a plugin are a marketplace or `~/.cursor/plugins/local/`. If user-local loading is disabled in your Cursor — the plugin log reports `userLocal=false` and the local directory is never read — use the dev installer, which symlinks the plugin's parts into the paths Cursor reads directly:
+
+```bash
+./scripts/dev-install.sh <workspace-dir>
+```
+
+That links `mcp.json`, the rules, and the commands into `<workspace>/.cursor/`, and the skills into `~/.cursor/skills-cursor/`. Reload the Cursor window, then run `/caffeine-projects` — it only reads, and triggers the browser sign-in on the first tool call.
+
+Because everything is symlinked back to this repo, edits take effect on the next reload. Existing files are backed up rather than overwritten. To remove it:
+
+```bash
+./scripts/dev-install.sh --uninstall <workspace-dir>
+```
+
+Skills are user-scoped, so they stay visible in every workspace until you uninstall.
+
 ## Resources
 
 - Caffeine: https://caffeine.ai

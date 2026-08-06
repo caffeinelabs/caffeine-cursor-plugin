@@ -3,10 +3,15 @@
   "owner": {
     "name": "Caffeine"
   },
+  "metadata": {
+    "description": "Cursor plugins for building and shipping Caffeine apps",
+    "version": "0.1.0"
+  },
   "plugins": [
     {
       "name": "caffeine",
-      "source": "plugins/caffeine"
+      "source": "./plugins/caffeine",
+      "description": "Create Caffeine projects, edit them through the Caffeine agent, follow builds and deployments, and drop into local Motoko development"
     }
   ]
 }

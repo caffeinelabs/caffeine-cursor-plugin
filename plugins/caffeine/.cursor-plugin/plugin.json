@@ -19,5 +19,6 @@
     "internet-computer",
     "fullstack"
   ],
-  "logo": "assets/logo.svg"
+  "logo": "assets/logo.svg",
+  "mcpServers": "./mcp.json"
 }

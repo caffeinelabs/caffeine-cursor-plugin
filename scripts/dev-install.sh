@@ -72,7 +72,7 @@ if $UNINSTALL; then
   for f in "$WORKSPACE"/.cursor/commands/*.md; do
     [[ -L "$f" ]] && [[ "$(readlink "$f")" == "$PLUGIN"* ]] && remove_link "$f"
   done
-  remove_link "$WORKSPACE/.cursor/mcp.json"
+  [[ -f "$WORKSPACE/.cursor/mcp.json" ]] && rm "$WORKSPACE/.cursor/mcp.json" && echo "  removed  $WORKSPACE/.cursor/mcp.json"
   while read -r name; do
     [[ -n "$name" ]] && remove_link "$SKILLS_HOME/$name"
   done < <(skill_names)
@@ -84,8 +84,17 @@ echo "Installing $PLUGIN into $WORKSPACE"
 
 mkdir -p "$WORKSPACE/.cursor/rules" "$WORKSPACE/.cursor/commands" "$SKILLS_HOME"
 
+# mcp.json is copied, not symlinked: Cursor does not reliably follow a
+# symlinked MCP config. Re-run this script after editing plugins/caffeine/mcp.json.
 echo "MCP server:"
-link "$PLUGIN/mcp.json" "$WORKSPACE/.cursor/mcp.json"
+if [[ -L "$WORKSPACE/.cursor/mcp.json" ]]; then
+  rm "$WORKSPACE/.cursor/mcp.json"
+elif [[ -e "$WORKSPACE/.cursor/mcp.json" ]]; then
+  mv "$WORKSPACE/.cursor/mcp.json" "$WORKSPACE/.cursor/mcp.json.bak-$(date +%s)"
+  echo "  backed up existing $WORKSPACE/.cursor/mcp.json"
+fi
+cp "$PLUGIN/mcp.json" "$WORKSPACE/.cursor/mcp.json"
+echo "  copied   $WORKSPACE/.cursor/mcp.json"
 
 echo "Rules:"
 for f in "$PLUGIN"/rules/*.mdc; do

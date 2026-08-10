@@ -12,7 +12,7 @@ Caffeine builds full-stack apps on the Internet Computer — a Motoko backend wi
   - `iterate-with-caffeine-agent` — make and verify changes on an existing project
   - `manage-caffeine-projects` — list, inspect, and clean up projects
   - `caffeine-local-development` — pull the source down and edit it here instead
-- **Commands** you can run directly: `/caffeine-new`, `/caffeine-iterate`, `/caffeine-projects`, `/caffeine-local`.
+- **Commands** you can run directly: `/caffeine-new`, `/caffeine-iterate`, `/caffeine-projects`, `/caffeine-local`, `/caffeine-help`.
 - **Rules** that keep the agent honest: follow a chat session to a stable state, answer its clarifications, and check `draftState` before claiming a change shipped.
 
 ## Install

@@ -8,7 +8,7 @@
   },
   "publisher": "Caffeine",
   "homepage": "https://caffeine.ai",
-  "repository": "https://github.com/caffeinelabs/caffeine-cli",
+  "repository": "https://github.com/caffeinelabs/caffeine-cursor-plugin",
   "license": "MIT",
   "category": "integrations",
   "keywords": [

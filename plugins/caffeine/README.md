@@ -75,7 +75,7 @@ Don't run an agent chat session that edits code while you have local changes pen
 
 This plugin connects to the **hosted** server, which is why sign-in is a browser flow and there is nothing to install. The hosted server deliberately leaves out the tools that touch a filesystem or run builds: `caffeine_build`, `caffeine_check`, `caffeine_preview`, `caffeine_clone_project`, `caffeine_doctor`, `caffeine_export_project`, `caffeine_import_project`, and the `caffeine_config_*` family. Run the equivalent CLI commands in the terminal instead.
 
-If you want those as MCP tools, run the server locally over stdio and point Cursor at it — see the [installation guide](https://github.com/caffeinelabs/caffeine-cli/blob/main/caffeine-mcp-installation-guide.md) in the CLI repo. That build is distributed through GitHub Packages and needs an `.npmrc` with a `read:packages` token, so it is an internal path rather than a public one today.
+If you want those as MCP tools, run the Caffeine MCP server locally over stdio and point Cursor at it instead. That build ships through GitHub Packages and needs an `.npmrc` with a `read:packages` token, so it is currently an internal path — Caffeine staff should follow the MCP installation guide in the CLI repo.
 
 ## A few things worth knowing
 
@@ -87,5 +87,4 @@ If you want those as MCP tools, run the server locally over stdio and point Curs
 ## Links
 
 - Caffeine: https://caffeine.ai
-- Caffeine CLI and MCP source: https://github.com/caffeinelabs/caffeine-cli
-- MCP installation guide: https://github.com/caffeinelabs/caffeine-cli/blob/main/caffeine-mcp-installation-guide.md
+- Plugin source and issues: https://github.com/caffeinelabs/caffeine-cursor-plugin

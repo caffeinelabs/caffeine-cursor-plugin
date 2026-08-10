@@ -40,4 +40,4 @@ There is also no diff or file-read tool, so changes are verified by looking at t
 **Links**
 
 - Caffeine: https://caffeine.ai
-- CLI and MCP source: https://github.com/caffeinelabs/caffeine-cli
+- Plugin source and issues: https://github.com/caffeinelabs/caffeine-cursor-plugin

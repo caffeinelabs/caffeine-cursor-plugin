@@ -61,5 +61,4 @@ Skills are user-scoped, so they stay visible in every workspace until you uninst
 ## Resources
 
 - Caffeine: https://caffeine.ai
-- Caffeine CLI and MCP source: https://github.com/caffeinelabs/caffeine-cli
-- MCP installation guide: https://github.com/caffeinelabs/caffeine-cli/blob/main/caffeine-mcp-installation-guide.md
+- Plugin source and issues: https://github.com/caffeinelabs/caffeine-cursor-plugin

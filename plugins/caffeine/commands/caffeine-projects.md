@@ -12,4 +12,4 @@ Report on the account's projects.
 3. Flag anything that needs attention: a `blocked` status, an `expired` draft, or a project stuck in `deploying`.
 4. If a project has no `liveUrl`, say it has never been published rather than reporting the draft as if it were live.
 
-If a call comes back unauthenticated, check `caffeine_auth_status` and tell the user to complete the browser sign-in that the first tool call opens.
+Call the tool straight away — do not check auth first and do not announce a sign-in, which you cannot start. If the call comes back unauthenticated, say so in one line and tell the user to click the login button next to `caffeine` in Cursor's MCP settings, then stop.

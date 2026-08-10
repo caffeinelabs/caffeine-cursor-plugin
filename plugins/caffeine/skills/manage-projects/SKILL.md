@@ -29,7 +29,9 @@ A deployed draft is not a published app. `draftUrl` changes every time the agent
 
 ## Checking authentication
 
-`caffeine_auth_status` confirms the connection is signed in. If a tool call fails as unauthenticated, this is the first thing to check — over this plugin's hosted connection, sign-in happens in the browser on first tool use, not through a CLI login.
+Do not check auth before doing work — just call the tool you need. There is no login tool on this connection, and you cannot start a sign-in.
+
+If a call fails as unauthenticated, say so in one line and tell the user to click the login button next to `caffeine` in Cursor's MCP settings. Do not retry, do not announce that you are starting an auth flow, and do not wait for one. `caffeine_auth_status` is only useful for confirming *who* is signed in, not for gating other calls.
 
 ## Deleting
 

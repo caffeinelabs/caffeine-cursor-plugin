@@ -22,3 +22,5 @@ Two ways to change code, and they are not interchangeable:
 2. **Locally** — when the user wants to edit Motoko or frontend source directly in this workspace. Call `caffeine_local_setup` for the real workflow and follow the local-development rule. This requires installing the Caffeine CLI and a browser login on the user's own machine, so ask first.
 
 Do not install software, trigger a browser login, or write to the user's disk without explicit consent.
+
+Authentication is the host's job, not yours. There is no login tool on this connection — `caffeine_auth_login` exists only on a locally-run server. Never announce that you are "starting the auth flow" or wait for a sign-in to happen; you cannot start one. Just call the tool you need. If the connection is not signed in, the call fails as unauthenticated, and the fix is for the user to click the login button next to `caffeine` in Cursor's MCP settings. Say that plainly and stop, rather than retrying the call or describing a flow you are not driving.

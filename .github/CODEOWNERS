@@ -1,0 +1,7 @@
+* @caffeinelabs/team-app
+
+# The published plugin — changes here reach Cursor marketplace users.
+/plugins/caffeine/** @caffeinelabs/team-app
+
+# Marketplace manifest: what Cursor reads to discover the plugin.
+/.cursor-plugin/marketplace.json @caffeinelabs/team-app
